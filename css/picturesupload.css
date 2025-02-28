@@ -1,0 +1,83 @@
+ body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f7f7f7;
+    }
+    .container {
+      width: 80%;
+      max-width: 600px;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+    }
+    .question-card {
+      margin-bottom: 20px;
+    }
+    .file-input {
+      margin-bottom: 10px;
+    }
+    .file-preview img {
+      max-width: 100px;
+      margin-top: 10px;
+      display: block;
+    }
+    .progress-bar-container {
+      width: 100%;
+      background-color: #f3f3f3;
+      border-radius: 5px;
+      height: 10px;
+      margin-bottom: 20px;
+    }
+    .progress-bar {
+      width: 0%;
+      background-color: #4caf50;
+      height: 100%;
+      border-radius: 5px;
+      transition: width 0.3s ease-in-out;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+      text-align: center;
+    }
+    .btn:hover {
+      background-color: #45a049;
+    }
+    .hidden {
+      display: none;
+    }
+    .preview-images {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 5px; /* Reduced the gap */
+      margin-top: 10px;
+    }
+    .preview-images img {
+      max-width: 100%;
+      max-height: 100px;
+      object-fit: cover; /* Ensures image fits the space without stretching */
+      border-radius: 5px; /* Optional: adds rounded corners to the images */
+    }
+    .image-count {
+      font-size: 16px;
+      margin-top: 10px;
+      text-align: center;
+    }
+    .progress-bar-wrapper {
+      margin-bottom: 20px;
+    }

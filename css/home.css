@@ -1,0 +1,1461 @@
+@media only screen and (min-width: 768px) {
+
+body {
+    background: white;
+}
+
+.allelements {
+    background: white;
+    width: auto;
+    width: 90%;
+    margin-left: 7%;
+
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.profilePicture {
+    height: auto;
+    width: 100%;
+    background: grey;
+    margin-top: 2%;
+    border: none;
+}
+
+.heading {
+    background: red;
+    width: 80%;
+    box-shadow: px 0px 25px 0px lightgrey;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.row:after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+[class*="col-"] {
+    float: left;
+    width: 60%;
+
+}
+
+.col-1 {
+    width: 60%;
+    height: 850px;
+    border: none;
+    overflow-y: scroll;
+    background: white;
+}
+
+.col-1::-webkit-scrollbar {
+    display: none;
+}
+
+.col-2 {
+    width: 40%;
+    height: 100%;
+    background: transparent;
+    margin-left: auto;
+    margin-top: -6.5%;
+    height: auto;
+}
+
+
+html {
+    font-family: "Lucida Sans", sans-serif;
+}
+
+.header {
+    background-color: darkblue;
+    position: fixed;
+    color: white;
+    padding: auto;
+    width: 7%;
+    height: 150%;
+    margin-top: -20%;
+    margin-left: -1.4%;
+
+}
+
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    background: blue;
+    width: auto;
+    color: white;
+    margin-left: 10%;
+    margin-top: 2px;
+}
+
+.allElem {
+    height: auto;
+    width: 100%;
+    background: pink;
+
+    margin-top: 2%;
+}
+
+.username-overlay {
+    font-family: serif;
+    font-weight: bold;
+    font-size: x-large;
+}
+
+.profession {
+    color: black;
+    font-size: medium;
+
+}
+
+.navigation {
+
+    background: transparent;
+
+}
+
+.navigation li {
+    float: right;
+    margin-right: 5%;
+    font-size: x-small;
+    font-weight: bold;
+}
+
+.navigation li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.smallPic {
+    border-radius: 50%;
+    margin-top: 200%;
+    margin-left: 25%;
+    height: 44px;
+    width: 44px;
+}
+
+.picOutline {
+    border-radius: 50%;
+    border: solid;
+    border-width: 1px;
+    border-color: lime;
+    border-style: dotted;
+}
+
+.ratings {
+    color: white;
+    font-size: small;
+    font-family: serif;
+}
+
+.checked {
+    color: #2196f6;
+    font-size: xx-large;
+
+}
+
+.unchecked {
+    color: white;
+    font-size: xx-large;
+}
+
+.contacts:hover {
+    background: lightblue;
+    color: steelblue;
+
+}
+
+.fa fa-check:hover {
+    color: steelblue;
+}
+
+.content {
+    height: auto;
+}
+
+.border {
+    width: 100%;
+    background: lightgrey;
+    height: 1px;
+    margin-top: 10px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td {
+    font-size: small;
+    text-align: left;
+    padding: 2%;
+    font-weight: bold;
+    font-family: serif;
+
+}
+
+
+th {
+    background: #663399;
+    text-align: center;
+    color: white;
+    font-size: small;
+    width: 20%;
+}
+
+
+
+.media-container {
+    display: flex;
+    /* Use flexbox */
+    flex-wrap: wrap;
+    /* Allow items to wrap to the next row */
+}
+
+.media-item {
+    margin: 5px;
+    outline: solid;
+    outline-color: grey;
+    outline-width: 1px;
+    width: 30%;
+    background: #5d638f;
+    height: auto;
+    margin: 1.5%;
+    /* Add some spacing between items */
+}
+
+.matches-container {
+    display: flex;
+    /* Use flexbox */
+
+    /* Allow items to wrap to the next row */
+}
+
+
+
+
+.galleryVideo {
+    height: 260px;
+    width: 100%;
+
+}
+
+.galleryImage {
+    height: 260px;
+
+    width: 100%;
+    background: url('user_149071.png');
+    background-repeat: no-repeat;
+
+    background-attachment: relative;
+    background-size: 100% 100%;
+
+}
+
+.menu {
+    background: transparent;
+    border: none;
+}
+
+.menu div {
+    padding: 2px;
+    margin: 3px;
+    width: 30px;
+    background: black;
+    position: relative;
+}
+
+.navigation {
+    margin-top: 250%;
+    height: fit-content;
+    text-align: left;
+    list-style: none;
+    z-index: 3;
+}
+
+.navigation li {
+    text-align: center;
+    margin-top: 25%;
+    margin-left: -2px;
+    text-decoration: none;
+    color: white;
+}
+
+.navigation li a {
+    text-align: center;
+    margin-top: 25%;
+    margin-left: -2px;
+    text-decoration: none;
+    color: white;
+    font-size: small;
+}
+
+.Matches {
+    width: 100%;
+    height: auto;
+    display: inline;
+    background: white;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.matchPic {
+    width: 100%;
+    max-height: 60px;
+    border-radius: 50%;
+    margin: auto;
+    background: transparent;
+}
+
+.matchContainer {
+    width: 40%;
+    height: auto;
+    margin-left: 1%;
+    margin-right: 4%;
+    display: inline-flex;
+    background: red;
+    margin-top: 1%;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+
+
+.profileImg {
+    margin: 2%;
+    float: left;
+    width: 70px;
+    height: 70px;
+    background: transparent;
+    border-radius: 50%;
+}
+
+.username {
+    width: 50%;
+
+    font-weight: bold;
+    background: transparent;
+    color: black;
+    border: none;
+}
+
+.myMatches {
+    margin-top: auto;
+    margin-left: 10%;
+    height: auto;
+    background: transparent;
+    color: white;
+    border: none;
+}
+
+.matching {
+    position: relative;
+    width: 30%;
+    height: 27px;
+    background: darkblue;
+    border: none;
+    text-align: center;
+    color: white;
+    border-radius: 7px;
+    font-weight: bold;
+    margin-top: 10%;
+    margin-right: 1%;
+
+}
+
+
+
+.fa-user {
+    color: white;
+}
+
+.savedImgcontainer {
+    display: flex;
+    /* Use flexbox */
+    flex-wrap: wrap;
+}
+
+.savedmedia-item {
+    margin: 5px;
+    outline: solid;
+    outline-color: grey;
+    outline-width: 1px;
+    border-radius: 10px;
+    width: 46%;
+    margin: 1.5%;
+    /* Add some spacing between items */
+}
+
+.savedVideo {
+    max-height: 135px;
+    width: 100%;
+
+}
+
+.savedImage {
+    max-height: 135px;
+
+    width: 100%;
+
+}
+
+.allNavs {
+    background-color: white;
+    color: white;
+    padding: auto;
+
+    width: 10%;
+    height: 100px;
+    display: inline-flex;
+
+}
+
+.addStory {
+    height: 40px;
+    width: 40px;
+    background-color: skyblue;
+    margin-top: 25%;
+    margin-left: 10%;
+    text-align: center;
+    border-radius: 50%;
+    font-size: medium;
+}
+
+.holdNavs {
+    width: 93%;
+    display: inline-flex;
+    height: 100px;
+    background-color: white;
+    margin-left: 7%;
+    margin-top: -1%;
+}
+
+input {
+    border: none;
+    outline: solid;
+    outline-width: 1px;
+    outline-color: lightgrey;
+    margin-left: 2%;
+    padding: 7px;
+    width: 80%;
+    border-radius: 10px;
+}
+
+.searchUser {
+    height: 40px;
+    width: 100%;
+    background-color: transparent;
+    margin-top: 5%;
+    display: inline-flex;
+    font-size: medium;
+}
+
+
+.userNavs {
+    background-color:transparent;
+    color: white;
+    width: 40%;
+    overflow-x: scroll;
+    height: 100px;
+    display: inline-flex;
+}
+
+.userNavs::-webkit-scrollbar {
+    display: none;
+}
+
+.myeachStory {
+   background: url('user_149071.png');
+    background-repeat: no-repeat;
+
+    background-attachment: relative;
+    background-size: 100% 100%;
+    height: 100px;
+    width: 250px;
+    color:black;
+    border-radius:7px;
+    font-size: small;
+    display: inline-flex;
+    /*border-radius: 50%;*/
+    font-size: medium;
+}
+.myeachvideo{
+     /* background: url('user_149071.png');
+    background-repeat: no-repeat;
+
+    background-attachment: relative;
+    background-size: 100% 100%;*/
+    background:black;
+    
+    height: 100px;
+    width: 140px;
+    color:black;
+    border-radius:7px;
+    font-size: small;
+    display: inline-flex;
+    /*border-radius: 50%;*/
+    font-size: medium;
+
+}
+
+.eachStory {
+    height:100px;
+    width:140px;
+    display: inline-flex;
+    margin-left:3%;
+    outline:none;
+    background-color:transparent;
+    font-size: medium;
+}
+
+.searchCont {
+    height: 100px;
+    width: 44%;
+    background-color: transparent;
+    text-align: center;
+
+    font-size: medium;
+}
+
+.userSettings {
+    height: 40px;
+    width: 40px;
+    background-color: skyblue;
+    text-align: center;
+    border-radius: 50%;
+    font-size: medium;
+}
+
+.seeAllStories {
+    height: 40px;
+    z-index: 10;
+    width: 40px;
+    background-color: darkblue;
+    margin-top: 2%;
+    margin-left: 5%;
+    margin-right: 5%;
+    text-align: center;
+    border-radius: 50%;
+    font-size: medium;
+}
+
+.fa-gear {
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    border-radius: 50%;
+    background: darkblue;
+    color: white;
+    text-decoration: none;
+    font-size: large;
+}
+
+.content {
+    background: lavender;
+    height: 250px;
+    overflow-y: scroll;
+}
+
+.content::-webkit-scrollbar {
+    display: none;
+}
+
+.storyStatus {
+    height: 40px;
+    width: 40px;
+    background-color: transparent;
+    margin-top: 25%;
+    margin-left: 10%;
+    text-align: center;
+    border-radius: 50%;
+    font-size: medium;
+}
+
+.myarrangements {
+    padding: 3px;
+    background: transparent;
+    width: fit-content;
+    margin-left: 8%;
+    color: grey;
+}
+
+.myarrangements:hover {
+    color: darkblue;
+}
+
+.hisname {
+    margin-left: -5%;
+    font-size: medium;
+    color: black;
+    margin-left: 5%;
+}
+
+.hisProfileImg {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+}
+
+.Matches {
+    width: 100%;
+    height: auto;
+    display: inline;
+    background: white;
+}
+
+.matchPic {
+    width: 100%;
+    max-height: 60px;
+    border-radius: 50%;
+    margin: auto;
+    background: transparent;
+}
+
+.matchContainer {
+    width: 96%;
+    margin-left: 2%;
+    height: 100px;
+    background: white;
+
+    margin-top: 4%;
+}
+
+.smallPic {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 10px;
+    background: transparent;
+}
+
+.profileImg {
+    float: left;
+    width: 100px;
+    height: 100px;
+    background-image: url('defaultimage');
+}
+
+.username {
+    width: 50%;
+    float: left;
+    font-weight: bold;
+    background: transparent;
+    color: black;
+    border: none;
+}
+
+.myMatches {
+    margin-top: auto;
+    margin-left: 10%;
+    height: auto;
+    background: transparent;
+    color: white;
+    border: none;
+}
+
+.matching {
+
+    width: 40%;
+    min-height: 40px;
+    background: darkblue;
+    border: none;
+    color: white;
+    font-weight: bold;
+
+}
+
+#remove {
+    margin-top: auto;
+    margin-right: 5%;
+    min-height: 30px;
+    width: 40%;
+    margin-bottom: 4.5%;
+    border-radius: 10px;
+    border: none;
+    outline: solid;
+    outline-width: 1px;
+    outline-color: lightgrey;
+}
+
+.fa-user {
+    color: white;
+}
+
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Pop-up container styles */
+.popup-container {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* Pop-up content styles */
+.popup-content {
+    background-color: #fff;
+    margin: 15% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    /* Could be more or less, depending on screen size */
+    max-width: 500px;
+    /* Max width of the pop-up */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Close button styles */
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+    width: 50px;
+    height: 28px;
+    --_g: no-repeat radial-gradient(farthest-side, #000 94%, #0000);
+    background:
+        var(--_g) 50% 0,
+        var(--_g) 100% 0;
+    background-size: 12px 12px;
+    position: relative;
+    animation: l23-0 1.5s linear infinite;
+}
+
+.loader:before {
+    content: "";
+    position: absolute;
+    height: 12px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #000;
+    left: 0;
+    top: 0;
+    animation:
+        l23-1 1.5s linear infinite,
+        l23-2 0.5s cubic-bezier(0, 200, .8, 200) infinite;
+}
+
+@keyframes l23-0 {
+
+    0%,
+    31% {
+        background-position: 50% 0, 100% 0
+    }
+
+    33% {
+        background-position: 50% 100%, 100% 0
+    }
+
+    43%,
+    64% {
+        background-position: 50% 0, 100% 0
+    }
+
+    66% {
+        background-position: 50% 0, 100% 100%
+    }
+
+    79% {
+        background-position: 50% 0, 100% 0
+    }
+
+    100% {
+        transform: translateX(calc(-100%/3))
+    }
+}
+
+@keyframes l23-1 {
+    100% {
+        left: calc(100% + 7px)
+    }
+}
+
+@keyframes l23-2 {
+    100% {
+        top: -0.1px
+    }
+}
+
+.allMySettings {
+    background: darkblue;
+    color: white;
+    height: 100%;
+    position: absolute;
+    top: 15%;
+    display: none;
+    /* Adjust as needed */
+    right: 0;
+    z-index: 1000;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 20%;
+    max-width: 300px;
+    text-align: left;
+}
+
+.allMySettings hr {
+    border: 1px solid #fff;
+    margin: 10px 0;
+}
+
+.allMySettings select {
+    width: 100%;
+    margin-top: 5%;
+}
+
+.profileDetails {
+    background: white;
+    width: auto;
+    display: flex;
+    flex-wrap: wrap;
+    ;
+}
+
+.searchForPeople {
+    background: white;
+    color: black;
+    height: 100%;
+    position: absolute;
+    top: 15%;
+    display: none;
+    overflow-y: scroll;
+    /* Adjust as needed */
+    right: 100;
+    z-index: 1000;
+    padding: 20px;
+    border: none;
+    width: 30%;
+    text-align: left;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.searchForPeople::-webkit-scrollbar {
+    display: none;
+}
+.displayAllStories {
+    background:white;
+    color: black;
+    height: 100%;
+    position: absolute;
+    top: 20%;
+    visibility: visible;
+    display: block;
+    overflow-y: scroll;
+    /* Adjust as needed */
+    left:400;
+    z-index: 1000;
+    padding: 20px;
+    border: none;
+    width: 30%;
+    text-align: left;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display:inline-flex;
+    flex-wrap: wrap;
+}
+
+.displayAllStories::-webkit-scrollbar {
+    display: none;
+}
+
+.holdEachContainer{
+    background-color:transparent;
+    display:inline-flex;
+    margin:2%;
+    flex-wrap: wrap;
+    height:auto;
+    width:160px;
+}
+.myAlleachStoryvideo{
+    background: black;
+    height:160px;
+    width: 160px;
+    border-radius: 50%;
+    border: solid;
+    border-width: 2px;
+    border-color: lime;
+    border-right-style: dotted;
+}
+.myAlleachStoryimage{
+    background: url('user_149071.png');
+    background-repeat: no-repeat;
+
+    background-attachment: relative;
+    background-size: 100% 100%;
+    background:black;
+    height:160px;
+    width: 160px;
+    border-radius: 50%;
+    border: solid;
+    border-width: 2px;
+    border-color: rgb(23, 83, 194);
+    border-left-style: dotted;
+}
+#closeAllStories{
+background: transparent;
+}
+#closeAllStories:hover{
+    background:darkblue;
+    }
+.fullImage{
+    position:fixed;
+    background:rgba(0,0,0,0.4);
+    width:100%;
+    z-index:10;
+    height:600px;
+    margin:-2%;
+    display:none;
+}
+.allMatchescontent{
+display: none;
+}
+.inlineBtn{
+    display:none;
+        }
+        .descriptionDetails{
+            display:inline-flex;
+            flex-wrap: wrap;
+            width:100%;
+            background-color:black;
+        }
+        .hisname{
+            color: white;
+                }
+                .profileDetails{
+        
+                    background-color: black;
+            
+                }
+                .theStoryDiv{
+                 display:none;
+                        }
+}
+@media only screen and (max-width: 600px) {
+    body{
+        background-color:black;
+        height:100%;
+        width:100%;
+    }
+    .holdNavs{
+background-color:black;
+height: auto;
+margin-left: -2px;
+display:inline-flex;
+flex-wrap: wrap;
+width:95%;
+overflow-y: scroll;
+overflow-x: scroll;
+    
+    }
+    .holdNavs::-webkit-scrollbar {
+        display: none;
+    }
+    .hisname{
+color: white;
+    }
+    .myarrangements{
+        color: white;
+        margin-left: 10%;
+        float:left;
+    }
+    .navigation{
+        list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color:#121212;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+       
+        list-style: none;
+    }
+    .navigation li:nth-child(1){
+        margin-left: 1px;
+        float: left;
+    }
+    .navigation li a{
+        color:white;
+        text-decoration: none;
+        display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    font-size:small;
+    
+    }
+    .navigation li a:hover:not(.active) {
+        background-color:black;
+    }
+    .navigation li:nth-child(2) {
+        margin-left: 2%;
+        float: left;
+    }
+    .navigation li:nth-child(3) {
+        margin-left: 2%;
+        float: left;
+    }
+    .navigation li:nth-child(4) {
+        margin-left: 2%;
+        float: left;
+    }
+    .navigation li:nth-child(5) {
+        margin-left: 2%;
+        float: left;
+    }
+    
+    .eachStory {
+        height:50px;
+        width:70px;
+        display: inline-flex;
+        margin-left:3%;
+        outline:none;
+        background-color:transparent;
+        font-size: medium;
+    }
+    .myeachStory {
+        background: url('user_149071.png');
+         background-repeat: no-repeat;
+         display: inline-flex;
+         background-attachment: relative;
+         background-size: 100% 100%;
+         height: 100px;
+         width: 200px;
+         color:black;
+         border-radius:7px;
+         font-size: small;
+         
+         /*border-radius: 50%;*/
+         font-size: medium;
+     }
+     .myeachvideo{
+          /* background: url('user_149071.png');
+         background-repeat: no-repeat;
+     
+         background-attachment: relative;
+         background-size: 100% 100%;*/
+         background:black;
+         
+         height: 100px;
+         width: 140px;
+         color:black;
+         border-radius:7px;
+         font-size: small;
+         display: inline-flex;
+         /*border-radius: 50%;*/
+         font-size: medium;
+     
+     }
+     .userNavs {
+        background-color:black;
+        color: white;
+        width: 100%;
+        overflow-x: scroll;
+        height: 100px;
+        display: inline-flex;
+    }
+    
+    .userNavs::-webkit-scrollbar {
+        display: none;
+    }
+    .seeAllStories{
+display:none;
+    }
+    .smallPic {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        margin: 10px;
+        background: transparent;
+        display:none;
+    }
+#searchMatch{
+display:none;
+    }
+    .galleryVideo {
+        height:auto;
+        width: 100%;
+    
+    }
+    
+    .galleryImage {
+        height: auto;
+    
+        width:100%;
+        background: url('user_149071.png');
+        background-repeat: no-repeat;
+    
+        background-attachment: relative;
+        background-size: 100% 100%;
+    
+    }
+   
+.media-container {
+    display:inline-flex;
+    /* Use flexbox */
+    width:100%;
+    flex-wrap: wrap;
+    /* Allow items to wrap to the next row */
+}
+
+.media-item {
+   
+    outline: solid;
+    outline-color: grey;
+    outline-width: 1px;
+    width: 95%;
+    background:black;
+    height: auto;
+    margin-left: 1%;
+    margin-top: 8%;
+    /* Add some spacing between items */
+}
+
+.matches-container {
+    display: flex;
+    /* Use flexbox */
+
+    /* Allow items to wrap to the next row */
+}
+.savedImgcontainer {
+    display: flex;
+    /* Use flexbox */
+    flex-wrap: wrap;
+}
+
+.savedmedia-item {
+    margin: 5px;
+    outline: solid;
+    outline-color: grey;
+    outline-width: 1px;
+    border-radius: 10px;
+    width: 46%;
+    margin: 1.5%;
+    /* Add some spacing between items */
+}
+
+.savedVideo {
+    max-height: 135px;
+    width: 100%;
+
+}
+
+.savedImage {
+    max-height: 135px;
+
+    width: 10%;
+
+}
+
+.hisProfileImg {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+}
+
+.Matches {
+    width: 100%;
+    height: auto;
+    display: inline;
+    background: white;
+}
+
+.matchPic {
+    width: 100%;
+    max-height: 60px;
+    border-radius: 50%;
+    margin: auto;
+    background: transparent;
+}
+
+.matchContainer {
+    width: 96%;
+    margin-left: 2%;
+    height: 100px;
+    background: white;
+
+    margin-top: 4%;
+}
+
+.content {
+    background: lavender;
+    height: 250px;
+    overflow-y: scroll;
+  
+}
+
+.content::-webkit-scrollbar {
+    display: none;
+}
+.col-2 {
+    width: 40%;
+    height: 100%;
+    background: transparent;
+    margin-left: auto;
+    margin-top: -6.5%;
+    height: auto;
+    display:none;
+}
+.allMatchescontent{
+    display:inline-flex;
+    overflow-x: scroll;
+    height:200px;
+    background-color: green;
+    width:100%;
+    }
+    .allMatchescontent::-webkit-scrollbar {
+        display: none;
+    }
+    .matchContainer {
+        width:300px;
+        margin-left: 4%;
+        height:110px;
+        background: transparent;
+        outline:solid;
+        outline-width: 1px;
+        outline-color: #ccc;
+        margin-top: 4%;
+        border-radius: 10px;
+        display:inline-flex;
+        flex-wrap: wrap;
+    }
+    
+    .smallPic {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        margin: 10px;
+        background: transparent;
+    }
+    
+    .profileImg {
+        margin:auto;
+        width: 60px;
+        height: 60px;
+        background-image: url('defaultimage');
+    }
+    
+    .username {
+        width: 50%;
+        margin-left:35%;
+        font-weight: bold;
+        font-size: medium;
+        background: transparent;
+        color:white;
+        border: none;
+    }
+    
+    .myMatches {
+        margin-top: auto;
+        height: auto;
+        width:120px;
+        background: transparent;
+        color: white;
+        border: none;
+        display: inline-flex;
+    }
+    
+    .matching {
+    float:left;
+        width: 50px;
+        height: 20px;
+        background: darkblue;
+        border: none;
+        color: white;
+        outline:none;
+        font-weight: bold;
+        font-size:x-small;
+        text-align:center;
+        border-radius: 7px;
+        margin-left: 2%;
+        
+    
+    }
+    
+    #remove {
+        margin-left: 9%;
+        height: 20px;
+        width: fit-content;
+        border-radius: 10px;
+        border: none;
+        float:left;
+        font-size:x-small;
+        outline: solid;
+        outline-width: 1px;
+        outline-color: lightgrey;
+    }
+    
+    .fa-user {
+        color: white;
+    }
+    .popup-container {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        z-index: 2000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black w/ opacity */
+    }
+    
+    /* Pop-up content styles */
+    .popup-content {
+        background-color:black;
+        margin: 15% auto;
+        /* 15% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 60%;
+        /* Could be more or less, depending on screen size */
+        max-width: 500px;
+        /* Max width of the pop-up */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    .profileDetails{
+        
+        background-color: black;
+
+    }
+    .descriptionDetails{
+        display:inline-flex;
+        flex-wrap: wrap;
+        width:100%;
+        background-color:black;
+    }
+    .hisname{
+        font-size: large;
+        margin-left: 6%;
+
+    }
+    .theStoryDiv{
+width:95px;
+height:100px;
+position:absolute;
+z-index: 100;
+margin-left: -1.8%;
+background-color:black;}
+
+    
+    .addStory {
+     
+        display:block;
+        text-align: center;
+        border-radius: 50%;
+        width:80px;
+        height:80px;
+        border-radius: 50%;
+        margin-top: 10%;
+        position:absolute;
+        z-index: 200;
+        float:center;
+        background-color:red;
+        
+        text-align: right;
+    }
+    .likeDiv{
+background:#121212;
+
+position: relative; 
+height:400px;
+width:100%;
+margin-top: 9%;
+z-index:2040;
+overflow:scroll;
+ /* Starting position */
+    }
+    .likeDiv::-webkit-scrollbar{
+        display:none;
+         /* Starting position */
+        
+            }
+    .closeBtn{
+font-size: xx-large;
+float:right;
+color:lightgrey;
+border:none;
+background:transparent;
+margin-top: 1%;
+    }
+    .closeBtn:hover{
+        background:red;
+        color:white;
+            }
+            .sendDiv{
+                position:sticky;
+                bottom: 0;
+                display:inline-flex;
+                width: 100%;
+                background:#212121;
+            }
+            .sendComment{
+                margin-left: 1%;
+                background:#212121;
+                border:none;
+                outline:solid;
+                outline-width:1px;
+width:75%;
+padding:10px;
+color:white;
+            }
+            .sendBtnComment{
+width:fit-content;
+padding:7px;
+            }
+            .commentDiv{
+                background:black; 
+                width:100%;
+                color:white;
+
+            }
+            .homepagePage{
+                width:100%;
+                height:200px;
+                border:none;
+            }
+                .homepagePage::-webkit-scrollbar{
+                    display:none;
+                        }
+
+}

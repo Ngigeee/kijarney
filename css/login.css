@@ -1,0 +1,90 @@
+.loginPage{
+background:rgba(0,0,0,0.5);
+width:40%;
+
+margin-left:30%;
+border-radius:10px;
+            }
+            input{
+                margin-left:30%;
+                width:40%;
+                padding:7px;
+                margin-top:2%;
+                margin-bottom:2%;
+                
+            }
+            input:hover{
+                outline:solid;
+                outline-color:rgb(183, 183, 247);
+                outline-width:1px;
+
+            }
+            h4{
+                text-align:center;
+
+color:white;
+font-family:courier;
+font-size:large;
+font-weight:bold;
+            }
+            h5{
+                
+text-align:center;
+color:white;
+font-family:courier;
+font-size:large;
+font-weight:bold;
+            }
+            .loginBtn{
+                margin-left:30%;
+                background:black;
+                padding:7px;
+                margin-top:2%;
+                margin-bottom:2%;
+                border:none;
+                color:white;
+                width:43%;
+                
+                
+            }
+            .loginBtn:hover{
+                outline:solid;
+                outline-color:grey;
+
+            }
+            a{
+                margin-left:35%;
+                text-decoration:none; 
+font-weight:bold;
+ color:darkblue;
+            }
+            body {
+  background-image: url("../images/image1.jpg");
+  background-size: cover;  /* This makes the image cover the entire background, even if it has to stretch */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+}
+            #showpopUp{
+background:green;
+height:20px;
+width:43%;
+margin-left:30%;
+text-align:center;
+display:none;
+
+            }
+            .kirinyagaLogo{
+
+margin-left:40%;
+height:80px;
+width:80px;
+border-radius:50%;
+            }
+            p{
+                margin-left:30%;
+                font-size:small;
+color:white;
+                            }
+                            .taketosignUp{
+                                margin-left:3%; 
+                            }
