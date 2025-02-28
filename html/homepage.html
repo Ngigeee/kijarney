@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Kijarney</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
+
+/* Style the iframe container */
+.iframe-container {
+  width: 100%;           /* Make the container full width */
+  height: 300px;         /* Set the height to match the size of the existing container */
+  overflow: hidden;      /* Hide the scrollbar */
+  position: relative;
+}
+.iframe-container::-webkit-scrollbar {
+  display:none;
+}
+.w3-container w3-padding::-webkit-scrollbar {
+display:none;
+}
+.w3-card w3-round w3-white::-webkit-scrollbar {
+display:none;
+}
+.w3-col m12::-webkit-scrollbar {
+display:none;
+}
+.w3-row-padding::-webkit-scrollbar {
+display:none;
+}
+
+/* Style the iframe */
+.iframe-content {
+  width: 100%;           /* Make the iframe full width of the container */
+  height: 100%;          /* Make the iframe full height of the container */
+  border: none;          /* Remove the border */
+  overflow: hidden;      /* Ensure no scrollbar inside the iframe */
+  display: block;        /* Ensure it stays inline */
+}
+.iframe-content::-webkit-scrollbar {
+display:none;
+}
+
+ .user-container, .friend-request-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .user-card, .friend-request-card {
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 200px;
+            overflow: hidden;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .user-card:hover, .friend-request-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .user-card img, .friend-request-card img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        .user-card button, .friend-request-card button {
+            margin-top: 10px;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+</style>
+</head>
+<body class="w3-theme-l5">
+
+<!-- Navbar -->
+<div class="w3-top">
+ <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
+  <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>Logo</a>
+  <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="News"><i class="fa fa-globe"></i></a>
+  <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Account Settings"><i class="fa fa-user"></i></a>
+  <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Messages"><i class="fa fa-envelope"></i></a>
+  <div class="w3-dropdown-hover w3-hide-small">
+    <button class="w3-button w3-padding-large" title="Notifications" id="notification-button">
+        <i class="fa fa-bell"></i>
+        <span class="w3-badge w3-right w3-small w3-green" id="notification-count">0</span>
+    </button>     
+    <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px" id="notification-list">
+        <!-- Notifications will be dynamically inserted here -->
+    </div>
+</div>
+
+  <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Account">
+    <img src="/w3images/avatar2.png" class="w3-circle" style="height:23px;width:23px" alt="Avatar">
+  </a>
+ </div>
+</div>
+
+<!-- Page Container -->
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">    
+  <!-- The Grid -->
+  <div class="w3-row">
+    <!-- Left Column -->
+    <div class="w3-col m3">
+      <!-- Profile -->
+      <div class="w3-card w3-round w3-white">
+        <div class="w3-container">
+         <h4 class="w3-center">My Profile</h4>
+         <p class="w3-center"><img src="" id="profileImage" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+         <hr>
+     <p>
+    <i class="fa fa-headphones fa-fw w3-margin-right w3-text-theme"></i> 
+    <span id="music">Designer, UI</span>
+</p>
+
+<p>
+    <i class="fa fa-map-marker fa-fw w3-margin-right w3-text-theme"></i>
+    <span id="personality">London, UK</span>
+</p>
+
+<p>
+    <i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> 
+    <span id="dob">April 1, 1988</span>
+</p>
+
+        </div>
+      </div>
+      <br>
+      
+      <!-- Accordion -->
+      <div class="w3-card w3-round">
+        <div class="w3-white">
+          <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> My Groups</button>
+          <div id="Demo1" class="w3-hide w3-container">
+            <p>Some text..</p>
+          </div>
+          <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> My Events</button>
+          <div id="Demo2" class="w3-hide w3-container">
+            <p>Some other text..</p>
+          </div>
+          <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i> My Photos</button>
+          <div id="Demo3" class="w3-hide w3-container">
+         <div class="w3-row-padding" id="myPhotContainer">
+         <br>
+           
+         </div>
+          </div>
+        </div>      
+      </div>
+      <br>
+      
+      <!-- Interests --> 
+      <div class="w3-card w3-round w3-white w3-hide-small">
+        <div class="w3-container">
+          <p>Interests</p>
+          <p>
+            <span class="w3-tag w3-small w3-theme-d5">News</span>
+            <span class="w3-tag w3-small w3-theme-d4">W3Schools</span>
+            <span class="w3-tag w3-small w3-theme-d3">Labels</span>
+            <span class="w3-tag w3-small w3-theme-d2">Games</span>
+            <span class="w3-tag w3-small w3-theme-d1">Friends</span>
+            <span class="w3-tag w3-small w3-theme">Games</span>
+            <span class="w3-tag w3-small w3-theme-l1">Friends</span>
+            <span class="w3-tag w3-small w3-theme-l2">Food</span>
+            <span class="w3-tag w3-small w3-theme-l3">Design</span>
+            <span class="w3-tag w3-small w3-theme-l4">Art</span>
+            <span class="w3-tag w3-small w3-theme-l5">Photos</span>
+          </p>
+        </div>
+      </div>
+      <br>
+      
+      <!-- Alert Box -->
+      <div class="w3-container w3-display-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small">
+        <span onclick="this.parentElement.style.display='none'" class="w3-button w3-theme-l3 w3-display-topright">
+          <i class="fa fa-remove"></i>
+        </span>
+        <p><strong>Hey!</strong></p>
+        <p>People are looking at your profile. Find out who.</p>
+      </div>
+    
+    <!-- End Left Column -->
+    </div>
+    
+    <!-- Middle Column -->
+    <div class="w3-col m7">
+    
+      <div class="w3-row-padding">
+        <div class="w3-col m12">
+          <!-- Photo upload form -->
+<div class="w3-card w3-round w3-white">
+    <div class="w3-container w3-padding">
+        <h6 class="w3-opacity">Post a Photo</h6>
+        <form id="photo-upload-form" enctype="multipart/form-data">
+            <div class="w3-input-container">
+                <input type="file" id="file-input" name="photo" accept="image/*" required>
+                <label for="file-input" class="w3-button w3-theme">Choose Photo</label>
+            </div>
+            
+            <!-- Image Preview -->
+            <div id="image-preview" style="display: none;">
+                <img id="preview-image" src="" alt="Preview" class="w3-margin-top" style="width: 100%; max-width: 300px;"/>
+            </div>
+            
+            <!-- Description input -->
+            <textarea id="photo-description" name="description" placeholder="Write a description..." class="w3-input w3-border" rows="4"></textarea>
+
+            <!-- Submit button -->
+            <button type="submit" class="w3-button w3-theme" style="margin-top: 10px;"><i class="fa fa-upload"></i> Upload</button>
+        </form>
+    </div>
+</div>
+
+        </div>
+      </div>
+
+<!-- Display uploaded photo posts -->
+      <div id="user-container" class="w3-container"></div>
+
+
+
+      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+        <img src="/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+        <span class="w3-right w3-opacity">1 min</span>
+        <h4>John Doe</h4><br>
+        <hr class="w3-clear">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <div class="w3-row-padding" style="margin:0 -16px">
+            <div class="w3-half">
+              <img src="/w3images/lights.jpg" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
+            </div>
+            <div class="w3-half">
+              <img src="/w3images/nature.jpg" style="width:100%" alt="Nature" class="w3-margin-bottom">
+          </div>
+        </div>
+        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
+        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> 
+      </div>
+      
+      <!-- New Container for iframe -->
+      <div class="w3-row-padding">
+        <div class="w3-col m12">
+          <div class="w3-card w3-round w3-white">
+            <div class="w3-container w3-padding">
+              <h6 class="w3-opacity">Find New Friends</h6>
+              <div id="friends-container" class="user-container">
+    <!-- User cards will be loaded here by JavaScript -->
+</div>
+
+<h1>Friend Requests</h1>
+
+<div id="friend-request-container" class="friend-request-container">
+    <!-- Friend request cards will be loaded here by JavaScript -->
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    <!-- End Middle Column -->
+    </div>
+    
+    <!-- Right Column -->
+    <div class="w3-col m2">
+      <div class="w3-card w3-round w3-white w3-center">
+        <div class="w3-container">
+          <p>Upcoming Events:</p>
+          <img src="/w3images/forest.jpg" alt="Forest" style="width:100%;">
+          <p><strong>Holiday</strong></p>
+          <p>Friday 15:00</p>
+          <p><button class="w3-button w3-block w3-theme-l4">Info</button></p>
+        </div>
+      </div>
+      <br>
+      
+     <div class="w3-card w3-round w3-white w3-center">
+  <div class="w3-container">
+    <p>Friend Request</p>
+    <img src="/w3images/avatar6.png" alt="Avatar" style="width:50%"><br>
+    <span>Jane Doe</span>
+    <div class="w3-row w3-opacity">
+      <!-- Accept Request Form -->
+      <div class="w3-half">
+        <form action="accept_request.php" method="POST">
+          <input type="hidden" name="request_id" value="12345"> <!-- Example request_id -->
+          <button type="submit" class="w3-button w3-block w3-green w3-section" title="Accept">
+            <i class="fa fa-check"></i> Accept
+          </button>
+        </form>
+      </div>
+      <!-- Reject Request Form -->
+      <div class="w3-half">
+        <form action="reject_request.php" method="POST">
+          <input type="hidden" name="request_id" value="12345"> <!-- Example request_id -->
+          <button type="submit" class="w3-button w3-block w3-red w3-section" title="Reject">
+            <i class="fa fa-times"></i> Reject
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- End Right Column -->
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="w3-container w3-padding-16 w3-theme-d1 w3-center">
+    <p>Footer Content Here</p>
+  </footer>
+
+  <!-- Add your own JavaScript here -->
+ <script>
+// Function to fetch images and display them dynamically
+function fetchImages() {
+    fetch('../php/fetchPhotosToHomepage.php')  // Fetch images from the PHP script
+        .then(response => response.json())
+        .then(data => {
+            // Get the photo container div
+            const photoContainer = document.getElementById('myPhotContainer');
+            
+            // Clear any existing content
+            photoContainer.innerHTML = '';
+
+            // Loop through each image path and create a new image element
+            data.forEach(imagePath => {
+                // Create a new div to hold the image
+                const imageDiv = document.createElement('div');
+                imageDiv.classList.add('w3-half'); // Use w3-half class for a two-column layout
+                
+                // Create an img element
+                const img = document.createElement('img');
+                img.src = imagePath;  // Set the src to the image path from the database
+                img.classList.add('w3-margin-bottom'); // Add margin style
+                img.style.width = '100%'; // Make image full width inside the div
+                
+                // Append the image to the div
+                imageDiv.appendChild(img);
+
+                // Append the div to the photo container
+                photoContainer.appendChild(imageDiv);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching images:', error);
+        });
+}
+
+// Accordion
+let imagesLoaded = false;  // Flag to track if images are already loaded
+
+function myFunction(id) {
+  var x = document.getElementById(id);
+  
+  // Check if the element is already shown
+  if (x.className.indexOf("w3-show") == -1) {
+    // Show the element
+    x.className += " w3-show";
+    
+    // Change background color of the previous element (button)
+    x.previousElementSibling.className += " w3-theme-d1";
+    
+    // Load images if they haven't been loaded yet
+    if (!imagesLoaded) {
+      fetchImages();  // Function to fetch and display images dynamically
+      imagesLoaded = true;  // Mark that images have been loaded
+    }
+  } else {
+    // Hide the element
+    x.className = x.className.replace("w3-show", "");
+    
+    // Reset background color of the previous element (button)
+    x.previousElementSibling.className = x.previousElementSibling.className.replace(" w3-theme-d1", "");
+  }
+}
+
+
+// Used to toggle the menu on smaller screens when clicking on the menu button
+function openNav() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+
+ fetch('../php/detailsToHomepage.php')
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    console.error('Error:', data.error);
+                } else {
+                    // Update profile information with the fetched data
+                    document.getElementById('profileImage').src = data.profile_pic || '/w3images/avatar3.png'; // Default image
+                    document.getElementById('personality').textContent = data.personality || 'No personality provided';
+
+document.getElementById('music').textContent = data.music || 'No music provided';
+
+                    document.getElementById('dob').textContent = data.dob || 'Date of birth not available';
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching user details:', error);
+            });
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Fetch Users
+    fetch('../php/findFriends.php')
+        .then(response => response.json())
+        .then(users => {
+            const userContainer = document.getElementById('friends-container');
+            
+            // Loop through each user and create a user card
+            users.forEach(user => {
+                const userCard = document.createElement('div');
+                userCard.classList.add('user-card');
+                
+                userCard.innerHTML = `
+                    <img src="${user.profile_pic || 'https://via.placeholder.com/150'}" alt="Profile Picture">
+                    <h3>${user.firstName}</h3>
+                    <p>${user.email}</p>
+                    <form class="friend-request-form" data-user-id="${user.ID}">
+                        <input type="hidden" name="user_id" value="${user.ID}">
+                        <button type="submit" class="friend-request-btn">${user.isFriendRequestSent ? 'Cancel Friend Request' : 'Send Friend Request'}</button>
+                    </form>
+                    <form class="like-form" data-user-id="${user.ID}">
+                        <input type="hidden" name="user_id" value="${user.ID}">
+                        <button type="submit" class="like-btn">${user.isLiked ? 'Dislike' : 'Like'}</button>
+                    </form>
+                `;
+                
+                userContainer.appendChild(userCard);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching users:', error);
+        });
+
+    // Handle Friend Request and Like submission
+    document.body.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form from submitting traditionally
+
+        if (event.target.classList.contains('friend-request-form')) {
+            const userId = event.target.getAttribute('data-user-id');
+            const btn = event.target.querySelector('.friend-request-btn');
+            const action = btn.innerText === 'Send Friend Request' ? 'send_friend_request' : 'cancel_friend_request';
+
+            // Send AJAX request to send/cancel friend request
+            fetch('../php/sendFriendRequest.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `receiver_id=${userId}&action=${action}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    btn.innerText = action === 'send_friend_request' ? 'Cancel Friend Request' : 'Send Friend Request';
+                    alert(action === 'send_friend_request' ? 'Friend request sent!' : 'Friend request cancelled!');
+                } else {
+                    alert("Error: " + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error sending friend request:', error);
+            });
+        }
+
+        // Handle Like/Dislike submission
+        if (event.target.classList.contains('like-form')) {
+            const userId = event.target.getAttribute('data-user-id');
+            const btn = event.target.querySelector('.like-btn');
+            const action = btn.innerText === 'Like' ? 'send_like' : 'send_dislike';
+
+            // Send AJAX request to like/dislike
+            fetch('../php/send_like.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `receiver_id=${userId}&action=${action}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    btn.innerText = action === 'send_like' ? 'Dislike' : 'Like';
+                    alert(action === 'send_like' ? 'You liked the user!' : 'You disliked the user!');
+                } else {
+                    alert("Error: " + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error sending like:', error);
+            });
+        }
+    });
+});
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Fetch notifications when the page loads
+    fetchNotifications();
+
+    // Fetch notifications from the server
+    function fetchNotifications() {
+        fetch('../php/fetchNotifications.php')
+            .then(response => response.json())
+            .then(data => {
+                if (data.notifications) {
+                    const notificationList = document.getElementById('notification-list');
+                    const notificationCount = document.getElementById('notification-count');
+
+                    // Clear current notifications
+                    notificationList.innerHTML = '';
+
+                    // Update notification count
+                    notificationCount.textContent = data.notifications.length;
+
+                    // Display each notification
+                    data.notifications.forEach(notification => {
+                        const notificationItem = document.createElement('a');
+                        notificationItem.classList.add('w3-bar-item', 'w3-button');
+                        notificationItem.href = "#"; // Link to relevant page (can be customized)
+
+                        // Add message and timestamp
+                        notificationItem.innerHTML = `${notification.message} <br><small>${new Date(notification.created_at).toLocaleString()}</small>`;
+
+                        notificationList.appendChild(notificationItem);
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching notifications:', error);
+            });
+    }
+
+    // Optionally, you can refresh notifications periodically (every 5 seconds, for example)
+    setInterval(fetchNotifications, 5000);
+});
+
+
+
+
+ // Handle image preview before upload
+    document.getElementById('file-input').addEventListener('change', function(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const previewImage = document.getElementById('preview-image');
+          const imagePreview = document.getElementById('image-preview');
+          previewImage.src = e.target.result;
+          imagePreview.style.display = 'block';  // Show the preview
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Handle form submission for photo upload
+    document.getElementById('photo-upload-form').addEventListener('submit', function(event) {
+      event.preventDefault();  // Prevent default form submission
+
+      const formData = new FormData(this); // Get form data
+
+      fetch('../php/uploadPost.php', {  // Replace with actual PHP endpoint
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === 'success') {
+          const photoContainer = document.getElementById('user-container');
+          const newPostDiv = document.createElement('div');
+          newPostDiv.classList.add('w3-card', 'w3-round', 'w3-white', 'w3-margin');
+          newPostDiv.innerHTML = `
+            <div class="w3-container">
+              <img src="${data.avatar_url}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+              <span class="w3-right w3-opacity">${data.time}</span>
+              <h4>${data.username}</h4><br>
+              <hr class="w3-clear">
+              <p>${data.photo_description}</p>
+              <div class="w3-row-padding" style="margin:0 -16px">
+                <div class="w3-half">
+                  <img src="${data.photo_url}" style="width:100%" alt="Uploaded Photo" class="w3-margin-bottom">
+                </div>
+              </div>
+              <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
+              <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
+            </div>
+          `;
+          photoContainer.prepend(newPostDiv);
+        } else {
+          alert('Failed to upload photo: ' + data.message);
+        }
+      })
+      .catch(error => {
+        console.error('Error uploading photo:', error);
+      });
+    });
+
+</script>
+
+</body>
+</html>
+

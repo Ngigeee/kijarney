@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register</title>
+        <link rel="stylesheet" href="../css/register.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    </head>
+    <body>
+        <div class="loginPage" id="loginPage">
+            <h4>KIJARNEY DATING</h4>
+            <img src="../images/image1.jpg" alt="logo" class="kirinyagaLogo">
+            <h5>REGISTER</h5>
+            <div id="showpopUp" style="display:none;">gui</div>
+
+            <form method="post" action="../php/register.php" id="formpage">
+                <input type="text" placeholder="Enter your first name" name="studentfirstName" id="studentfirstName" name="studentfirstName" required>
+                <input type="text" placeholder="Enter your last name" name="studentlastName" id="studentlastName" name="studentlastName" required>
+                <input type="text" placeholder="Enter your ID number" name="studentID" id="studentID" name="studentID" required>
+                <input type="email" placeholder="Enter your email" name="studentemail" id="studentemail" name="studentemail"required>
+                <input type="password" placeholder="Enter your password" name="studentpassword" id="studentpassword" name="studentpassword" required>
+                <input type="password" placeholder="Confirm your password" id="confirmpassword" required>
+                <input type="button" value="Sign up" class="sign_up" id="submitBtn">
+            </form><br>
+            <a href="login.html">Login here</a>
+        </div>
+          
+         <script src="../javascript/register.js"></script> 
+        
+    </body>
+</html>

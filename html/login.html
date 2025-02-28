@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<title>Login</title>
+        <style>
+@media only screen and (min-width: 768px) {
+            .loginPage{
+background:white;
+background:rgba(0,0,0,0.5);
+width:40%;
+
+margin-left:30%;
+border-radius:10px;
+            }
+            input{
+                margin-left:30%;
+                width:40%;
+                padding:7px;
+                margin-top:2%;
+                margin-bottom:2%;
+                
+            }
+            input:hover{
+                outline:solid;
+                outline-color:rgb(183, 183, 247);
+                outline-width:1px;
+
+            }
+            h4{
+                text-align:center;
+                color:white;
+            }
+            h5{
+                text-align:center;
+                color:white;
+            }
+            .loginBtn{
+                margin-left:30%;
+                background:black;
+                padding:7px;
+                margin-top:2%;
+                margin-bottom:2%;
+                border:none;
+                color:white;
+                width:43%;
+                
+                
+            }
+            .loginBtn:hover{
+                outline:solid;
+                outline-color:lightgrey;
+
+            }
+            a{
+                margin-left:35%;
+                text-decoration:none; 
+            }
+            body {
+  background-image: url("../images/image2.jpg");
+  background-size: cover;  /* This makes the image cover the entire background, even if it has to stretch */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+}
+            #showpopUp{
+background:green;
+height:20px;
+width:43%;
+margin-left:30%;
+text-align:center;
+display:none;
+
+            }
+            @keyframes mymove {
+                from {margin-left:0%;}
+                to {margin-left:50%;}
+            } 
+            
+            .kirinyagaLogo{
+margin-left:30%;
+height:70px;
+width:70px;
+border-radius:50%;
+animation-name: mymove;
+    animation-duration: 4s;
+    animation-iteration-count:infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+            }
+            p{
+                margin-left:30%;
+                font-size:small;
+color:white;
+  }
+  .taketosignUp{
+      margin-left:3%; 
+  }
+                        }
+@media only screen and (max-width: 500px) {
+  .loginPage{
+      background:rgba(0,0,0,0.5);
+      width:90%;
+      
+      margin-left:3%;
+      border-radius:10px;
+                  }
+                  input{
+                      margin-left:30%;
+                      width:40%;
+                      padding:7px;
+                      margin-top:2%;
+                      margin-bottom:2%;
+                      
+                      
+                  }
+                  input:hover{
+                      outline:solid;
+                      outline-color:rgb(183, 183, 247);
+                      outline-width:1px;
+      
+                  }
+                  h4{
+                      text-align:center;
+                      color:white;
+                  }
+                  h5{
+                      text-align:center;
+                      text-transform:uppercase;
+                      color:white;
+                  }
+                  .loginBtn{
+                      margin-left:30%;
+                      background:black;
+                      padding:7px;
+                      margin-top:2%;
+                      margin-bottom:2%;
+                      border:none;
+                      color:white;
+                      width:43%;
+                      
+                      
+                  }
+                  .loginBtn:hover{
+                   
+                     background-color:lightgrey;
+      
+                  }
+                  a{
+                      margin-left:35%;
+                      text-decoration:none; 
+                  }
+                  body {
+  background-image: url("../images/image2.jpg");
+  background-size: cover;  /* This makes the image cover the entire background, even if it has to stretch */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+}
+                  #showpopUp{
+      background:green;
+      height:20px;
+      width:43%;
+      margin-left:30%;
+      text-align:center;
+      display:none;
+      
+
+                  }
+                  @keyframes mymove {
+                    from {margin-left:0%;}
+                    to {margin-left:45%;}
+                } 
+                
+                .kirinyagaLogo{
+    margin-left:2%;
+   height:70px;
+width:70px;
+border-radius:50%;
+    animation-name: mymove;
+        animation-duration: 2s;
+        animation-iteration-count:infinite;
+        animation-direction: alternate;
+        animation-timing-function: linear;
+                }
+                
+                  p{
+                      margin-left:30%;
+                      font-size:small;
+                      color:white;
+        }
+        .taketosignUp{
+            margin-left:3%; 
+        }
+
+
+
+                        }
+        </style>
+
+    </head>
+    <body>
+        <div class="loginPage" id="loginPage">
+            <h4>Welcome to kijarney</h4>
+            <img src="../images/image1.jpg" alt="logo" class="kirinyagaLogo">
+            <h5>LOGIN </h5>
+            <div id="showpopUp"></div>
+            <input type="text" placeholder="Enter your email" name="studentemail" id="useremail" required>
+            <input type="password" placeholder="Enter your password" name="studentpassword" id="userpassword" required><br>
+            <p>Do not  have an account?<a href="register.html" class="taketosignUp">signup</a></p>
+            <input type="button" value="Login" class="loginBtn" id="submitBtn"><br>
+            
+        </div>
+        
+        <script>
+            document.getElementById("submitBtn").addEventListener("click", function(e) {
+                e.preventDefault();
+        
+                var useremail = document.getElementById("useremail").value;
+                var studentpassword = document.getElementById("userpassword").value;
+        
+                fetch('../php/login.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        useremail: useremail,
+                        userpassword: userpassword
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    
+                    if (data.error) {
+                        displaySuccess('red', data.error);
+                    }if(data !==""){
+                        if (useremail === data.email) {
+  displaySuccess('green', 'Login successful'+data.ID);
+  setTimeout(() => {
+      window.location.href = "homepage.html?hello="+data.ID;
+  }, 2000);
+                        } 
+                    }
+                     else {
+                        displaySuccess('red', 'please sign up');
+                        
+                    }
+                })
+                .catch(error => {
+                    displaySuccess('red', 'Error: ' + error.message);
+                });
+            });
+        
+            function displaySuccess(color, message) {
+                var showpopUp = document.getElementById("showpopUp");
+                showpopUp.style.display = "block";
+                showpopUp.style.backgroundColor = color;
+                showpopUp.innerHTML = message;
+        
+                setTimeout(() => {
+                    showpopUp.style.display = "none";
+                }, 2000); // Hide the message after 2 seconds
+            }
+        </script>
+        
+        
+    </body>
+</html>

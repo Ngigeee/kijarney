@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Your Pictures</title>
+  <style>
+    /* Basic styling for the progress bar */
+    .progress-bar-wrapper {
+      width: 100%;
+      background-color: #f2f2f2;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .progress-bar-container {
+      height: 10px;
+      width: 100%;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      width: 0%;
+      height: 100%;
+      background-color: #4CAF50;
+      transition: width 0.5s ease;
+    }
+
+    .image-count {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    /* New styling for image previews and container */
+    .container {
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      border-radius: 5px;
+      margin: 20px auto;
+      max-width: 800px; /* Adjust max-width as needed */
+    }
+
+    .preview-images {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* Two columns */
+      grid-gap: 10px; 
+    }
+
+    .preview-images img {
+      width: 100%; 
+      height: auto; 
+      border-radius: 5px; 
+      object-fit: cover; 
+    }
+
+    /* Style the submit button */
+    .btn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .btn:disabled {
+      background-color: #ccc; 
+      cursor: not-allowed;
+    }
+
+    /* Loading spinner */
+    .loading {
+      display: none; 
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .loading.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Profile Picture Upload Form -->
+    <div id="profileUploadForm">
+      <h1>Upload Your Profile Picture</h1>
+      <form id="profileForm" action="../php/profileUpload.php" method="POST" enctype="multipart/form-data">
+        <input type="file" id="profilePic" name="profilePic" accept="image/*" onchange="previewProfilePicture()" required>
+        <div id="profilePreview"></div>
+        <button class="btn" id="profileSubmitBtn" type="submit">Submit Profile Picture</button>
+      </form>
+    </div>
+
+    <!-- Multiple Images Upload Form (Initially hidden) -->
+    <div id="multipleImagesForm" style="display: none;">
+      <h1>Upload Your Pictures</h1>
+      <div class="question-card" id="step2">
+        <label for="additionalPics">Upload at least 5 pictures</label>
+
+        <div class="progress-bar-wrapper">
+          <div class="progress-bar-container">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
+          <div id="percentageCount" class="image-count">0%</div>
+        </div>
+
+        <form id="uploadForm" action="../php/picturesUpload.php" method="POST" enctype="multipart/form-data">
+          <input type="file" id="additionalPics" name="additionalPics[]" class="file-input" accept="image/*" multiple onchange="previewMultipleImages()" required>
+          <div id="previewImages" class="preview-images"></div>
+          <div id="imageCount" class="image-count">0 out of 5 pictures uploaded</div>
+          
+          <!-- Hidden input field for originalLastId -->
+          <input type="hidden" id="lastId" name="lastId" value="">
+
+          <button class="btn" id="submitBtn" type="submit" disabled>Submit</button> 
+        </form>
+
+        <div class="loading">
+          <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let uploadedImages = [];
+    let progressBar = document.getElementById("progressBar");
+    let imageCountDisplay = document.getElementById("imageCount");
+    let percentageCountDisplay = document.getElementById("percentageCount");
+    let submitBtn = document.getElementById("submitBtn");
+    let loadingSpinner = document.querySelector('.loading'); 
+    let profileSubmitBtn = document.getElementById("profileSubmitBtn");
+    let profileForm = document.getElementById("profileForm");
+    let profileUploadForm = document.getElementById("profileUploadForm");
+    let multipleImagesForm = document.getElementById("multipleImagesForm");
+
+    // Function to preview profile picture
+    function previewProfilePicture() {
+        const file = document.getElementById("profilePic").files[0];
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            const imgElement = document.createElement("img");
+            imgElement.src = e.target.result;
+            imgElement.style.width = "100px"; // Set width to preview the profile picture
+            imgElement.style.height = "100px";
+            document.getElementById("profilePreview").innerHTML = ""; // Clear any previous preview
+            document.getElementById("profilePreview").appendChild(imgElement);
+        };
+
+        reader.readAsDataURL(file);
+    }
+
+    // Profile picture form submission handler
+    profileForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Simulate an API call to upload profile picture
+        setTimeout(() => {
+            alert("Profile picture uploaded successfully!");
+
+            // Hide profile form and show multiple images form
+            profileUploadForm.style.display = 'none';
+            multipleImagesForm.style.display = 'block';
+        }, 1000); // Simulate 1 second delay for upload
+    });
+
+    // Function to preview multiple images
+    function previewMultipleImages() {
+        const files = document.getElementById("additionalPics").files;
+        uploadedImages = [];
+
+        // Clear the current preview images
+        document.getElementById("previewImages").innerHTML = "";
+
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                uploadedImages.push(e.target.result);
+
+                const imgElement = document.createElement("img");
+                imgElement.src = e.target.result;
+                document.getElementById("previewImages").appendChild(imgElement);
+
+                // Update progress bar and image count
+                updateProgressBar(uploadedImages.length);
+            };
+
+            reader.readAsDataURL(file);
+        }
+    }
+
+    // Function to update progress bar
+    function updateProgressBar(imageCount) {
+        let percentage = (imageCount / 5) * 100;
+
+        if (imageCount >= 5) {
+            percentage = 100;
+            submitBtn.disabled = false; 
+        }
+
+        progressBar.style.width = percentage + "%";
+        imageCountDisplay.textContent = `${imageCount} out of 5 pictures uploaded`;
+        percentageCountDisplay.textContent = `${Math.round(percentage)}%`;
+    }
+
+    // Handle form submission and loading state for multiple images
+    document.getElementById("uploadForm").addEventListener('submit', (event) => {
+        loadingSpinner.classList.add('active'); 
+        submitBtn.disabled = true; 
+    });
+
+  </script>
+
+</body>
+</html>

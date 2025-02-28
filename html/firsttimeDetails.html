@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to DateMe!</title>
+  <link rel="stylesheet" href="../css/firsttimeDetails.css">
+<!-- Add CryptoJS library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1-crypto-js.js"></script>
+
+</head>
+<body>
+  <form id="form" action="../php/firsttimeDetails.php" method="POST" enctype="multipart/form-data">
+    <div class="container">
+      <h1>Welcome to DateMe!</h1>
+
+      <!-- Progress Bar -->
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+
+      <!-- Question Cards -->
+      <div class="question-card active" id="question1">
+        <div class="question-container">
+          <label for="dob">Date of Birth</label>
+          <input type="date" id="dob" name="dob" required>
+        </div>
+        <button type="button" class="btn next-btn" onclick="nextQuestion(1)">Next</button>
+      </div>
+
+      <div class="question-card" id="question2">
+        <div class="question-container">
+          <label for="profilePic">Upload Profile Picture (Facebook-like)</label>
+          <input type="file" id="profilePic" name="profilePic" accept="image/*" onchange="previewProfileImage()" required>
+          <div class="file-preview" id="filePreview"></div>
+        </div>
+        <button type="button" class="btn prev-btn" onclick="previousQuestion(2)">Back</button>
+        <button type="button" class="btn next-btn" onclick="nextQuestion(2)">Next</button>
+      </div>
+
+      <div class="question-card" id="question3">
+        <div class="question-container">
+          <label for="firstDate">What is your ideal first date?</label>
+          <textarea id="firstDate" name="firstDate" rows="4" required placeholder="Describe your ideal first date..."></textarea>
+        </div>
+        <button type="button" class="btn prev-btn" onclick="previousQuestion(3)">Back</button>
+        <button type="button" class="btn next-btn" onclick="nextQuestion(3)">Next</button>
+      </div>
+
+      <div class="question-card" id="question4">
+        <div class="question-container">
+          <label for="hobby">What is your favorite hobby?</label>
+          <input type="text" id="hobby" name="hobby" required placeholder="E.g., Reading, Traveling, Hiking...">
+        </div>
+        <button type="button" class="btn prev-btn" onclick="previousQuestion(4)">Back</button>
+        <button type="button" class="btn next-btn" onclick="nextQuestion(4)">Next</button>
+      </div>
+
+      <div class="question-card" id="question5">
+        <div class="question-container">
+          <label>Are you more of an introvert or extrovert?</label>
+          <div>
+            <input type="radio" id="introvert" name="personality" value="Introvert" required>
+            <label for="introvert">Introvert</label>
+            <input type="radio" id="extrovert" name="personality" value="Extrovert" required>
+            <label for="extrovert">Extrovert</label>
+          </div>
+        </div>
+        <button type="button" class="btn prev-btn" onclick="previousQuestion(5)">Back</button>
+        <button type="button" class="btn next-btn" onclick="nextQuestion(5)">Next</button>
+      </div>
+
+      <div class="question-card" id="question6">
+        <div class="question-container">
+          <label for="pet">Do you have pets?</label>
+          <input type="text" id="pet" name="pet" required placeholder="Do you have any pets?">
+        </div>
+        <button type="button" class="btn prev-btn" onclick="previousQuestion(6)">Back</button>
+        <button type="button" class="btn next-btn" onclick="nextQuestion(6)">Next</button>
+      </div>
+
+      <div class="question-card" id="question7">
+        <div class="question-container">
+          <label for="smoking">Do you smoke?</label>
+          <input type="radio" id="smokingYes" name="smoking" value="Yes">
+          <label for="smokingYes">Yes</label>
+          <input type="radio" id="smokingNo" name="smoking" value="No">
+          <label for="smokingNo">No</label>
+        </div>
+        <button type="button" class="btn prev-btn" onclick="previousQuestion(7)">Back</button>
+        <button type="button" class="btn next-btn" onclick="nextQuestion(7)">Next</button>
+      </div>
+
+      <div class="question-card" id="question8">
+        <div class="question-container">
+          <label for="travel">Do you like to travel?</label>
+          <input type="radio" id="travelYes" name="travel" value="Yes">
+          <label for="travelYes">Yes</label>
+          <input type="radio" id="travelNo" name="travel" value="No">
+          <label for="travelNo">No</label>
+        </div>
+        <button type="button" class="btn prev-btn" onclick="previousQuestion(8)">Back</button>
+        <button type="button" class="btn next-btn" onclick="nextQuestion(8)">Next</button>
+      </div>
+
+      <div class="question-card" id="question9">
+        <div class="question-container">
+          <label for="music">What kind of music do you like?</label>
+          <input type="text" id="music" name="music" required placeholder="What are your favorite genres?">
+        </div>
+        <button type="button" class="btn prev-btn" onclick="previousQuestion(9)">Back</button>
+        <button type="button" class="btn next-btn" onclick="nextQuestion(9)">Next</button>
+      </div>
+
+      <div class="question-card" id="question10">
+        <div class="question-container">
+          <label for="favoriteFood">What is your favorite type of food?</label>
+          <select id="favoriteFood" name="favoriteFood" required>
+            <option value="Italian">Italian</option>
+            <option value="Chinese">Chinese</option>
+            <option value="Mexican">Mexican</option>
+            <option value="Japanese">Japanese</option>
+            <option value="Indian">Indian</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <button type="button" class="btn prev-btn" onclick="previousQuestion(10)">Back</button>
+        <button type="buttom" class="btn" onclick="submitForm()">Submit</button>
+      </div>
+
+         
+    </div>
+  </form>
+        <!-- Question Cards script  -->
+<script src="../javascript/firsttimeDetails.js">
+
+</script>
+</body>
+</html>

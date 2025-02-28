@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/profile.css">
+    
+    <style>
+    
+    /* Styling for select and option elements */
+    select, option {
+      width: 95%; /* Make the select box take up 95% of the container width */
+      padding: 10px; /* Add padding inside the select box for better spacing */
+      margin: 10px 0; /* Add margin above and below the select box */
+      border: 1px solid #ccc; /* Light gray border around the select box */
+      border-radius: 5px; /* Round the corners of the select box */
+      font-size: 16px; /* Set font size */
+      box-sizing: border-box; /* Ensure padding and borders are included in width calculation */
+    }
+/* General styles for the social media container */
+.social-media-container {
+    display: flex;
+    justify-content: center;
+    gap: 9px; /* Adds space between the icons */
+    padding: 20px;
+}
+
+/* Styling for social media links */
+.social-media-link {
+    display: flex;
+    align-items: center;background-color: #3b5998;
+    justify-content: center;
+    text-decoration: none;
+    width: 50px; /* Size of the icon container */
+    height: 50px; /* Size of the icon container */
+    border-radius: 10px; /* Circular container */
+    font-size: 24px; /* Icon size */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Facebook icon styles */
+.social-media-link.facebook {
+    
+background-color: #2d4373; /* Facebook blue */
+    color: white; 
+      width:50px;/* Icon color white */
+}
+
+.social-media-link.facebook:hover {
+    background-color: #2d4373; /* Slightly darker blue when hovered */
+}
+
+/* Instagram icon styles */
+.social-media-link.instagram {
+    background: linear-gradient(135deg, #f09, #d62d20); /* Instagram gradient */
+    color: white; /* Icon color white */
+}
+
+.social-media-link.instagram:hover {
+    background: linear-gradient(135deg, #f09, #e14a6d); /* Slightly darker gradient on hover */
+}
+
+/* LinkedIn icon styles */
+.social-media-link.linkedin {
+    background-color: #0077b5; /* LinkedIn blue */
+    color: white; /* Icon color white */
+}
+
+.social-media-link.linkedin:hover {
+    background-color: #005a8c; /* Darker LinkedIn blue on hover */
+}
+
+/* Hover effects */
+.social-media-link:hover {
+    transform: scale(1.1); /* Slightly enlarge icon on hover */
+}
+
+/* Styling for the like button */
+.like-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for the like button */
+.like-button:hover {
+    background-color: #0056b3;
+}
+
+  </style>
+
+   
+</head>
+<body>
+
+<div class="topnav" id="myTopnav">
+  <a href="#home"><i class="fa fa-home" style="color:#FF6347"></i></a>
+  <a href="#news"><i class="fa fa-envelope" style="color:#00BFFF"></i></a>
+  <a href="#contact"><i class="fa fa-phone" style="color:#32CD32"></i></a>
+  <a href="#about" class="active"><i class="fa fa-user" style="color:#FFD700"></i></a>
+  <a href="#logout" class="split"><i class="fa fa-sign-out" style="color:#FF4500"></i></a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars" style="color:#FF1493"></i>
+  </a>
+</div>
+
+<div class="All-container">
+    <div class="profile-container">
+        <div class="profile-header">
+                    
+    <h1 class="heading">My Profile</h1>
+
+ <div class="profile-picture-container">
+    <div class="profile-picture">
+        <img src="../images/backgroundimage.jpg" alt="Profile Picture" id="profilePicDisplay">
+    </div>
+    <span id="myuserName">Guest</span><br><br>
+<span id="myuserName" style="color:skyblue;">AGE</span><br>
+<strong><span id="ageDisplay" style="font-size:xx-large;">AGE</span></strong><br>
+
+    <div class="profile-stats">
+        <div>
+            <i class="fa fa-thumbs-up" style="color:skyblue;"></i> <!-- Like Icon -->
+            <span><strong>150</strong></span>
+            Likes
+        </div>
+        <div>
+            <i class="fa fa-heart"style="color:red;"></i> <!-- Match Icon -->
+            <span><strong>25</strong></span>
+            Matches
+        </div>
+        <div>
+            <i class="fa fa-users"></i> <!-- Followers Icon -->
+            <span><strong>300</strong></span>
+            Followers
+        </div>
+    </div>
+
+    <p class="bio" id="bioDisplay">
+        <i class="fa fa-pen"></i> <!-- Bio Icon -->
+        I am passionate about technology and love traveling the world!
+    </p>
+</div>
+ <div class="progress-circle-container">
+                <svg class="progress-circle" width="150" height="150" viewBox="0 0 150 150">
+                    <circle class="background-circle" cx="75" cy="75" r="70" stroke="#e6e6e6" stroke-width="10" fill="none"/>
+                    <circle class="foreground-circle" cx="75" cy="75" r="70" stroke="#4CAF50" stroke-width="10" stroke-dasharray="440" stroke-dashoffset="220" fill="none"/>
+                </svg>
+                <span class="progress-text">Complete Profile</span>
+            </div>
+    </div>
+</div>
+
+
+       
+
+
+        <div class="image-gallery-container">
+            <h2 style="text-align:center;">Gallery</h2>
+            <div class="gallery-container" id="galleryContainer">
+                </div>
+        </div>
+
+   
+
+   <div class="user-details-container">
+    <h2 style="text-align:center;">User Details</h2>
+    <div class="user-details-wrapper">
+        <div class="user-details-item">
+            <h4><i class="fa fa-birthday-cake" style="color:#FF6347"></i> Date of Birth</h4>
+            <p id="dobDisplay">null</p>
+        </div>
+        <div class="user-details-item">
+            <h4><i class="fa fa-calendar-check" style="color:#00BFFF"></i> Ideal First Date</h4>
+            <p id="firstDateDisplay">null</p>
+        </div>
+        <div class="user-details-item">
+            <h4><i class="fa fa-futbol" style="color:#32CD32"></i> Hobby</h4>
+            <p id="hobbyDisplay">null</p>
+        </div>
+        <div class="user-details-item">
+            <h4><i class="fa fa-users" style="color:#FFD700"></i> Personality</h4>
+            <p id="personalityDisplay">null</p>
+        </div>
+        <div class="user-details-item">
+            <h4><i class="fa fa-paw" style="color:#FF4500"></i> Pets</h4>
+            <p id="petDisplay">null</p>
+        </div>
+        <div class="user-details-item">
+            <h4><i class="fa fa-smoking" style="color:#8A2BE2"></i> Smoking</h4>
+            <p id="smokingDisplay">null</p>
+        </div>
+        <div class="user-details-item">
+            <h4><i class="fa fa-plane" style="color:#FF1493"></i> Travel</h4>
+            <p id="travelDisplay">null</p>
+        </div>
+        <div class="user-details-item">
+            <h4><i class="fa fa-music" style="color:#1E90FF"></i> Music</h4>
+            <p id="musicDisplay">null</p>
+        </div>
+        <div class="user-details-item">
+            <h4><i class="fa fa-utensils" style="color:#FFD700"></i> Favorite Food</h4>
+            <p id="favoriteFoodDisplay">null</p>
+        </div>
+        <div class="user-details-item">
+            <h4><i class="fa fa-paint-brush" style="color:#FF69B4"></i> Favorite Color</h4>
+            <p id="favoriteColorDisplay">null</p>
+        </div>
+        <div class="user-details-item">
+            <h4><i class="fa fa-briefcase" style="color:#FF8C00"></i> Occupation</h4>
+            <p id="occupationDisplay">null</p>
+        </div>
+        <div class="user-details-item">
+            <h4><i class="fa fa-map-marker-alt" style="color:#32CD32"></i> Location</h4>
+            <p id="locationDisplay">null</p>
+        </div>
+    </div>
+</div>
+
+
+
+
+        <div class="interests-container">
+            <h2 style="text-align:center;">Interests</h2>
+            <div class="interests" id="interestsContainer">
+                <p class="interest" id="interestDisplay">null</p>
+                
+                </div>
+        <!-- Social Media Links -->
+        <div class="social-media-container">
+            <a href="#" class="social-media-link"style="background-color: #3b5998; /* Facebook blue */
+    color: white; /*"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-media-link" style=" background: linear-gradient(135deg, #f09, #d62d20); /* Instagram gradient */
+    color: white;"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-media-link" style="  background-color: #0077b5; /* LinkedIn blue */
+    color: white;"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+<button class="like-button">Like</button>
+        </div>
+
+        
+
+<!-- Modal for displaying the clicked image -->
+    <div class="modal" id="imageModal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <img id="modalImage" src="" alt="Full Image">
+        </div>
+
+<!-- Overlay to add interests -->
+
+    </div>
+
+    </div>
+<div class="overlay" id="overlay">
+        <div class="overlay-content">
+            
+<button type="button" class="close-btn" id="closeBtn">&times;</button>
+
+
+    <div class="container">
+        <h1>Welcome to Kijarney</h1>
+        <h3>Fill to complete your Profile</h3>
+        <!-- Progress Bar -->
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+         <!-- Question Cards -->
+        <div class="question-card active" id="question1">
+            <div class="question-container">
+                <label for="userInterests">what's your interests?</label>
+                <input type="text" id="userInterests" name="userInterests" placeholder="E.g., Football, Basketball, bike riding..." required>
+            </div>
+            <button type="button" class="btn next-btn" >quiz 1</button>
+        </div>
+
+        <div class="question-card active" id="question1">
+            <div class="question-container">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" name="dob" required>
+            </div>
+            <button type="button" class="btn next-btn" >quiz 2</button>
+        </div>
+
+        <div class="question-card" id="question2">
+            <div class="question-container">
+                <label for="favColor">Whats your favourite color?</label>
+                <input type="text" id="favColor" name="favColor"  placeholder="E.g., Red, Blue, Green..." required>
+            </div>
+            <button type="button" class="btn next-btn" >quiz 3</button>
+        </div>
+
+        <div class="question-card" id="question3">
+            <div class="question-container">
+                <label for="firstDate">What is your ideal first date?</label>
+                <textarea id="firstDate" name="firstDate" rows="4" required placeholder="Describe your ideal first date..."></textarea>
+            </div>
+            <button type="button" class="btn next-btn" >quiz 4</button>
+        </div>
+
+        <div class="question-card" id="question4">
+            <div class="question-container">
+                <label for="hobby">What is your favorite hobby?</label>
+                <input type="text" id="hobby" name="hobby" required placeholder="E.g., Reading, Traveling, Hiking...">
+            </div>
+            <button type="button" class="btn next-btn" >quiz 5</button>
+        </div>
+
+        <div class="question-card" id="question5">
+            <div class="question-container">
+                <label>Are you more of an introvert or extrovert?</label>
+                <div>
+                    <input type="radio" id="introvert" name="personality" value="Introvert" required>
+                    <label for="introvert">Introvert</label>
+                    <input type="radio" id="extrovert" name="personality" value="Extrovert" required>
+                    <label for="extrovert">Extrovert</label>
+                </div>
+            </div>
+            <button type="button" class="btn next-btn" >quiz 6</button>
+        </div>
+
+        <div class="question-card" id="question6">
+            <div class="question-container">
+                <label for="pet">Do you have pets?</label>
+                <input type="text" id="pet" name="pet" required placeholder="Do you have any pets?">
+            </div>
+            <button type="button" class="btn next-btn" >quiz 7</button>
+        </div>
+
+        <div class="question-card" id="question7">
+            <div class="question-container">
+                <label for="smoking">Do you smoke?</label>
+                <input type="radio" id="smokingYes" name="smoking" value="Yes">
+                <label for="smokingYes">Yes</label>
+                <input type="radio" id="smokingNo" name="smoking" value="No">
+                <label for="smokingNo">No</label>
+            </div>
+            <button type="button" class="btn next-btn" >quiz 8</button>
+        </div>
+
+        <div class="question-card" id="question8">
+            <div class="question-container">
+                <label for="travel">Do you like to travel?</label>
+                <input type="radio" id="travelYes" name="travel" value="Yes">
+                <label for="travelYes">Yes</label>
+                <input type="radio" id="travelNo" name="travel" value="No">
+                <label for="travelNo">No</label>
+            </div>
+            <button type="button" class="btn next-btn" >quiz 9</button>
+        </div>
+
+        <div class="question-card" id="question9">
+            <div class="question-container">
+                <label for="music">What kind of music do you like?</label>
+                <input type="text" id="music" name="music" required placeholder="What are your favorite genres?">
+            </div>
+
+            <button type="button" class="btn next-btn" >quiz 10</button>
+        </div>
+<div class="question-card" id="question11">
+            <div class="question-container">
+                <label for="music">What is your occupation?</label>
+                <input type="text" id="music" name="music" required placeholder="What are your favorite genres?">
+            </div>
+            <button type="button" class="btn next-btn" >quiz 11</button>
+        </div>
+
+
+ <div class="question-card" id="question12">
+    <div class="question-container">
+      <label for="countrySelect">Select your country</label>
+      <select id="countrySelect" required>
+        <option value="" disabled selected>Select your country</option>
+      </select>
+    </div>
+    <button type="button" class="btn next-btn">Quiz 12</button>
+  </div>
+
+
+        <div class="question-card" id="question13">
+            <div class="question-container">
+                <label for="favoriteFood">What is your favorite type of food?</label>
+                <select id="favoriteFood" name="favoriteFood" required>
+                    <option value="Italian">Italian</option>
+                    <option value="Chinese">Chinese</option>
+                    <option value="Mexican">Mexican</option>
+                    <option value="Japanese">Japanese</option>
+                    <option value="Indian">Indian</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <button type="button" class="btn" onclick="submitForm()">Submit</button>
+        </div>
+    </div>
+
+        </div>
+</div>
+    <script>
+//hidding the overlay
+document.getElementById('closeBtn').addEventListener('click', function() {
+    document.getElementById('overlay').style.display = 'none';
+});
+
+
+
+// Function to collect and submit all form data as JSON
+function submitForm() {
+    // Collect input data
+const userInterests = document.getElementById('userInterests').value;
+    const dob = document.getElementById('dob').value;
+const favouriteColor = document.getElementById('favColor').value;
+    const firstDate = document.getElementById('firstDate').value;
+    const hobby = document.getElementById('hobby').value;
+    const personality = document.querySelector('input[name="personality"]:checked') ? document.querySelector('input[name="personality"]:checked').value : '';
+    const pet = document.getElementById('pet').value;
+    const smoking = document.querySelector('input[name="smoking"]:checked') ? document.querySelector('input[name="smoking"]:checked').value : '';
+    const travel = document.querySelector('input[name="travel"]:checked') ? document.querySelector('input[name="travel"]:checked').value : '';
+    const music = document.getElementById('music').value;
+    const favouriteFood = document.getElementById('favoriteFood').value;
+
+    // Prepare data to send in the body of the request
+    const data = {
+        userInterests,
+        dob,
+        favouriteColor,
+        firstDate,
+        hobby,
+        personality,
+        pet,
+        smoking,
+        travel,
+        music,
+        favouriteFood
+    };
+
+    // Send data using fetch (POST request)
+    fetch('../php/firsttimeDetails.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json', // Send data as JSON
+        },
+        body: JSON.stringify(data) // Convert data object to JSON
+    })
+    .then(response => response.json())  // Handle the JSON response
+    .then(data => {
+        alert('Form submitted successfully');
+        console.log(data);
+document.getElementById("overlay").style.display="none";
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Error submitting the form');
+    });
+}
+
+
+
+    // Highlight empty fields
+    function highlightField(input) {
+        const parent = input.closest('.question-container');
+        parent.style.border = '2px solid red';
+
+        if (!document.querySelector('.highlighted')) {
+            input.focus();
+            input.classList.add('highlighted');
+        }
+    }
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Ensure DOM is fully loaded before executing
+document.addEventListener('DOMContentLoaded', function () {
+    const progressBar = document.getElementById('progressBar');
+    const galleryContainer = document.getElementById('galleryContainer');
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const closeModal = document.getElementById('closeModal');
+    const overlay = document.getElementById('overlay');
+    const profilePicDisplay = document.getElementById('profilePicDisplay');
+    const userName = document.getElementById('userName');
+    const myuserName = document.getElementById('myuserName');
+    const onlineStatus = document.getElementById('onlineStatus');
+
+    // Fetch and display gallery images
+    fetch('../php/fetchUserPhotos.php')
+        .then(response => response.json())
+        .then(galleryImages => {
+            galleryImages.forEach(imageSrc => {
+                const img = document.createElement('img');
+                img.src = imageSrc;
+                img.alt = "Gallery Image";
+                img.addEventListener('click', function () {
+                    modal.style.display = 'flex';
+                    modalImage.src = imageSrc;
+                });
+                galleryContainer.appendChild(img);
+            });
+        })
+        .catch(error => console.error('Error fetching gallery images:', error));
+
+    // Close modal functionality
+    closeModal.addEventListener('click', function () {
+        modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', function (event) {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+
+    // Fetch profile picture
+    fetch('../php/fetchProfile.php')
+        .then(response => response.json())
+        .then(data => {
+            const profilePicUrl = data.profilePic;
+            if (profilePicUrl) {
+                profilePicDisplay.src = profilePicUrl;
+            } else {
+                profilePicDisplay.alt = 'No Profile Picture Available';
+            }
+        })
+        .catch(error => console.error('Error fetching profile picture:', error));
+
+    // Fetch profile data
+    fetch('../php/profileData.php')
+    .then(response => response.text()) // Parse as text first to handle potential HTML error pages
+    .then(data => {
+        try {
+            const jsonData = JSON.parse(data); // Manually parse JSON
+            const { dob, firstDate, hobby, personality, pet, smoking, travel, music, favoriteFood, interests,favColor,occupation,location,age } = jsonData;
+
+            document.getElementById('dobDisplay').textContent = dob || 'N/A';
+            document.getElementById('firstDateDisplay').textContent = firstDate || 'N/A';
+            document.getElementById('hobbyDisplay').textContent = hobby || 'N/A';
+            document.getElementById('personalityDisplay').textContent = personality || 'N/A';
+            document.getElementById('petDisplay').textContent = pet || 'N/A';
+            document.getElementById('smokingDisplay').textContent = smoking || 'N/A';
+            document.getElementById('travelDisplay').textContent = travel || 'N/A';
+            document.getElementById('musicDisplay').textContent = music || 'N/A';
+            document.getElementById('favoriteFoodDisplay').textContent = favoriteFood || 'N/A';
+            document.getElementById('interestDisplay').textContent = interests || 'N/A';
+ document.getElementById('favoriteColorDisplay').textContent = favColor || 'N/A';
+ document.getElementById('occupationDisplay').textContent = occupation || 'N/A';
+ document.getElementById('locationDisplay').textContent = location || 'N/A'; 
+ document.getElementById('ageDisplay').textContent = age +"  "+"yrs" || 'N/A';
+        } catch (error) {
+            console.error('Error parsing JSON response:', error);
+            alert('There was an issue with loading profile data. Please try again later.');
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching profile data:', error);
+        alert('There was an issue with loading profile data. Please try again later.');
+    });
+
+    // Fetch and check interests
+    function checkInterests() {
+        fetch('../php/checkInterest.php')
+            .then(response => response.json())
+            .then(data => {
+                if (data.interests === '') {
+                    overlay.style.display = 'flex';
+                } else {
+                    overlay.style.display = 'none';
+                }
+            })
+            .catch(error => console.error('Error checking interests:', error));
+    }
+
+    // Handle form submission for interests
+    document.getElementById('interestsForm').addEventListener('submit', function (event) {
+        event.preventDefault();  // Prevent the default form submission
+
+        const interests = document.getElementById('interestsInput').value;
+
+        fetch('../php/saveInterests.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ interests: interests })
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    overlay.style.display = 'none';
+                    progressBar.style.width = '100%';
+                } else {
+                    alert('Error saving interests');
+                }
+            })
+            .catch(error => console.error('Error saving interests:', error));
+    });
+
+    // Check interests when the page loads
+    checkInterests();
+
+    // Fetch user information (name and online status)
+    fetch('../php/onlineStatus.php')
+        .then(response => response.json())
+        .then(data => {
+            const { firstName, online } = data;
+            userName.textContent = firstName || 'Guest';
+            myuserName.textContent = firstName || 'Guest';
+
+            if (online) {
+                onlineStatus.classList.add('online');
+                onlineStatus.classList.remove('offline');
+            } else {
+                onlineStatus.classList.add('offline');
+                onlineStatus.classList.remove('online');
+            }
+        })
+        .catch(error => console.error('Error fetching user info:', error));
+
+    // Mobile navigation toggle
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+
+    // Form validation before submission
+    // Function to submit the form using Fetch API
+
+
+    // Preview multiple images
+    function previewMultipleImages() {
+        const files = document.getElementById('multiplePics').files;
+        const previewDiv = document.getElementById('multiPreview');
+        previewDiv.innerHTML = '';
+
+        Array.from(files).forEach(file => {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                previewDiv.appendChild(img);
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+
+    // Decrypt URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const encryptedData = urlParams.get('data');
+
+    if (!encryptedData) {
+        alert("Error occurred: No data found in URL. Redirecting to the registration page.");
+        //window.location.href = //"http://localhost/kijarney/html/register.html";  // Redirect to your registration page
+    } else {
+        const base64Data = encryptedData.replace(/-/g, '+').replace(/_/g, '/');
+        const decodedData = atob(base64Data);
+        const [encryptedText, ivBase64] = decodedData.split('::');
+        const iv = CryptoJS.enc.Base64.parse(ivBase64);
+        const key = CryptoJS.enc.Utf8.parse("mysecretkey12345");
+
+        const decrypted = CryptoJS.AES.decrypt(encryptedText, key, { iv: iv });
+        const decryptedData = decrypted.toString(CryptoJS.enc.Utf8);
+
+        if (decryptedData) {
+            const [firstName, email, id] = decryptedData.split('::');
+            document.getElementById('confirmation').innerHTML = `
+                <p>Welcome, ${firstName}!</p>
+                <p>Email: ${email}</p>
+                <p>ID: ${id}</p>
+            `;
+        } else {
+            document.getElementById('confirmation').innerHTML = "<p>Error decrypting data.</p>";
+        }
+    }
+});
+
+
+
+
+
+// List of countries
+    const countries = [
+      "Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", 
+      "Anguilla", "Antarctica", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", 
+      "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", 
+      "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia and Herzegovina", 
+      "Botswana", "Brazil", "Brunei Darussalam", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", 
+      "Cambodia", "Cameroon", "Canada", "Cayman Islands", "Central African Republic", "Chad", "Chile", 
+      "China", "Christmas Island", "Cocos (Keeling) Islands", "Colombia", "Comoros", "Congo", 
+      "Congo (Democratic Republic of the)", "Cook Islands", "Costa Rica", "Croatia", "Cuba", "Cyprus", 
+      "Czech Republic", "Côte d'Ivoire", "Denmark", "Djibouti", "Dominica", "Dominican Republic", 
+      "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", 
+      "Faroe Islands", "Fiji", "Finland", "France", "French Guiana", "French Polynesia", "Gabon", 
+      "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guadeloupe", 
+      "Guam", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Heard Island and McDonald Islands", 
+      "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", 
+      "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kuwait", 
+      "Kyrgyzstan", "Lao People's Democratic Republic", "Latvia", "Lebanon", "Lesotho", "Liberia", 
+      "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macao", "North Macedonia", "Madagascar", 
+      "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Martinique", "Mauritania", 
+      "Mauritius", "Mayotte", "Mexico", "Micronesia (Federated States of)", "Moldova", "Monaco", "Mongolia", 
+      "Montenegro", "Montserrat", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", 
+      "Netherlands Antilles", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Niue", 
+      "Norfolk Island", "Northern Mariana Islands", "Norway", "Oman", "Pakistan", "Palau", "Panama", 
+      "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Pitcairn Islands", "Poland", "Portugal", 
+      "Puerto Rico", "Qatar", "Réunion", "Romania", "Russian Federation", "Rwanda", "Saint Barthélemy", 
+      "Saint Helena, Ascension and Tristan da Cunha", "Saint Kitts and Nevis", "Saint Lucia", "Saint Martin (French part)", 
+      "Saint Pierre and Miquelon", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Saudi Arabia", 
+      "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Sint Maarten (Dutch part)", "Slovakia", 
+      "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Georgia and the South Sandwich Islands", 
+      "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Svalbard and Jan Mayen", 
+      "Swaziland", "Sweden", "Switzerland", "Syrian Arab Republic", "Taiwan", "Tajikistan", "Tanzania", 
+      "Thailand", "Timor-Leste", "Togo", "Tokelau", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", 
+      "Turkmenistan", "Turks and Caicos Islands", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", 
+      "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", 
+      "Wallis and Futuna", "Western Sahara", "Yemen", "Zambia", "Zimbabwe"
+    ];
+
+    // Get the dropdown element
+    const countrySelect = document.getElementById("countrySelect");
+
+    // Loop through the countries array and create an <option> for each country
+    countries.forEach(country => {
+      const option = document.createElement("option");
+      option.value = country;
+      option.textContent = country;
+      countrySelect.appendChild(option);
+    });
+</script>
+
+</body>
+</html>

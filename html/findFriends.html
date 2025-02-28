@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+    <style>
+        .user-container, .friend-request-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .user-card, .friend-request-card {
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 200px;
+            overflow: hidden;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .user-card:hover, .friend-request-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .user-card img, .friend-request-card img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        .user-card button, .friend-request-card button {
+            margin-top: 10px;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Users List</h1>
+
+<div id="user-container" class="user-container">
+    <!-- User cards will be loaded here by JavaScript -->
+</div>
+
+<h1>Friend Requests</h1>
+
+<div id="friend-request-container" class="friend-request-container">
+    <!-- Friend request cards will be loaded here by JavaScript -->
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Fetch Users
+    fetch('../php/findFriends.php')
+        .then(response => response.json())
+        .then(users => {
+            const userContainer = document.getElementById('user-container');
+            
+            // Loop through each user and create a user card
+            users.forEach(user => {
+                const userCard = document.createElement('div');
+                userCard.classList.add('user-card');
+                
+                userCard.innerHTML = `
+                    <img src="${user.profile_pic || 'https://via.placeholder.com/150'}" alt="Profile Picture">
+                    <h3>${user.firstName}</h3>
+                    <p>${user.email}</p>
+                    <form class="friend-request-form" data-user-id="${user.ID}">
+                        <input type="hidden" name="user_id" value="${user.ID}">
+                        <button type="submit" class="friend-request-btn">${user.isFriendRequestSent ? 'Cancel Friend Request' : 'Send Friend Request'}</button>
+                    </form>
+                    <form class="like-form" data-user-id="${user.ID}">
+                        <input type="hidden" name="user_id" value="${user.ID}">
+                        <button type="submit" class="like-btn">${user.isLiked ? 'Dislike' : 'Like'}</button>
+                    </form>
+                `;
+                
+                userContainer.appendChild(userCard);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching users:', error);
+        });
+
+    // Handle Friend Request and Like submission
+    document.body.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form from submitting traditionally
+
+        if (event.target.classList.contains('friend-request-form')) {
+            const userId = event.target.getAttribute('data-user-id');
+            const btn = event.target.querySelector('.friend-request-btn');
+            const action = btn.innerText === 'Send Friend Request' ? 'send_friend_request' : 'cancel_friend_request';
+
+            // Send AJAX request to send/cancel friend request
+            fetch('../php/sendFriendRequest.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `receiver_id=${userId}&action=${action}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    btn.innerText = action === 'send_friend_request' ? 'Cancel Friend Request' : 'Send Friend Request';
+                    alert(action === 'send_friend_request' ? 'Friend request sent!' : 'Friend request cancelled!');
+                } else {
+                    alert("Error: " + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error sending friend request:', error);
+            });
+        }
+
+        // Handle Like/Dislike submission
+        if (event.target.classList.contains('like-form')) {
+            const userId = event.target.getAttribute('data-user-id');
+            const btn = event.target.querySelector('.like-btn');
+            const action = btn.innerText === 'Like' ? 'send_like' : 'send_dislike';
+
+            // Send AJAX request to like/dislike
+            fetch('../php/send_like.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `receiver_id=${userId}&action=${action}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    btn.innerText = action === 'send_like' ? 'Dislike' : 'Like';
+                    alert(action === 'send_like' ? 'You liked the user!' : 'You disliked the user!');
+                } else {
+                    alert("Error: " + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error sending like:', error);
+            });
+        }
+    });
+});
+</script>
+
+</body>
+</html>

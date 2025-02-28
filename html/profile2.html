@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dating Profile</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  /* Basic styles for the page */
+  html, body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Container for the main content */
+  .content-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  /* Left column for profile information */
+  .profile-column {
+    width: 33%;
+    float: left;
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+
+  /* Profile image container */
+  .profile-image {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  /* Profile information text */
+  .profile-info {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .profile-info h2 {
+    font-size: 22px;
+    margin-bottom: 5px;
+  }
+
+  .profile-info p {
+    margin-bottom: 10px;
+  }
+
+  /* Skills section */
+  .skills {
+    margin-top: 20px;
+  }
+
+  .skills h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  /* Progress bars for skills */
+  .skill-bar {
+    height: 10px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    margin-bottom: 5px;
+  }
+
+  .skill-bar .skill-fill {
+    height: 100%;
+    background-color: #4CAF50;
+    border-radius: 5px;
+  }
+
+  /* Languages section */
+  .languages {
+    margin-top: 20px;
+  }
+
+  .languages h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  /* Language proficiency bars */
+  .language-bar {
+    height: 24px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    margin-bottom: 5px;
+  }
+
+  .language-bar .proficiency-fill {
+    height: 100%;
+    background-color: #teal;
+    border-radius: 5px;
+  }
+
+  /* Right column for work experience and education */
+  .work-education-column {
+    width: 66%;
+    float: left;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+
+  /* Work experience and education sections */
+  .work-experience, .education {
+    margin-bottom: 20px;
+  }
+
+  .work-experience h2, .education h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+
+  .work-experience h6, .education h6 {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+
+  /* Footer */
+  footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+
+  footer a {
+    color: #fff;
+  }
+
+  footer a:hover {
+    opacity: 0.7;
+  }
+</style>
+</head>
+<body>
+
+<div class="content-container">
+
+  <div class="profile-column">
+    <img class="profile-image" src="path/to/profile_picture.jpg" alt="Profile Picture">
+    <div class="profile-info">
+      <h2>John Doe</h2> 
+      <p>Age: 30</p>
+      <p>Location: New York, NY</p>
+      <p>About Me: I enjoy hiking, reading, and trying new restaurants.</p>
+    </div>
+
+    <div class="skills">
+      <h3>Skills</h3>
+      <p>Cooking</p>
+      <div class="skill-bar">
+        <div class="skill-fill" style="width: 80%;"></div>
+      </div>
+      <p>Photography</p>
+      <div class="skill-bar">
+        <div class="skill-fill" style="width: 70%;"></div>
+      </div>
+      <p>Traveling</p>
+      <div class="skill-bar">
+        <div class="skill-fill" style="width: 90%;"></div>
+      </div>
+    </div>
+
+    <div class="languages">
+      <h3>Languages</h3>
+      <p>English</p>
+      <div class="language-bar">
+        <div class="proficiency-fill" style="width: 100%;"></div>
+      </div>
+      <p>Spanish</p>
+      <div class="language-bar">
+        <div class="proficiency-fill" style="width: 60%;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="work-education-column">
+    <div class="work-experience">
+      <h2>Work Experience</h2>
+      <div>
+        <h5>Software Engineer at Acme Corp</h5>
+        <h6>2018 - Present</h6>
+        <p>Developed and maintained web applications using Java, Spring, and React.</p>
+      </div>
+      <div>
+        <h5>Software Engineer at XYZ Inc.</h5>
+        <h6>2015 - 2018</h6>
+        <p>Worked on a team developing mobile applications for Android and iOS.</p>
+      </div>
+    </div>
+
+    <div class="education">
+      <h2>Education</h2>
+      <div>
+        <h5>Bachelor of Science in Computer Science</h5>
+        <h6>University of California, Berkeley</h6>
+        <h6>2010 - 2014</h6>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>Copyright &copy; 2023 Dating Site</p>
+</footer>
+
+</body>
+</html>

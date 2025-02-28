@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decrypt URL Parameters</title>
+    <style>
+        /* Simple styling for overlay */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); display: flex; justify-content: center; align-items: center; z-index: 1000; }
+        .overlay-content { background: #fff; padding: 30px; text-align: center; border-radius: 10px; max-width: 500px; width: 90%; }
+        .overlay h1 { font-size: 2rem; color: #333; margin-bottom: 20px; }
+        .overlay p { font-size: 1rem; color: #555; margin-bottom: 20px; }
+        .overlay button { padding: 10px 20px; font-size: 1rem; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s; }
+        .overlay button:hover { background-color: #218838; }
+        .hide-overlay { display: none; }
+    </style>
+</head>
+<body>
+
+<div id="overlay" class="overlay">
+    <div class="overlay-content">
+        <h1>Welcome to Kijarney!</h1>
+        <p id="Welkam">gui</p>
+        <button onclick="closeOverlay()">Close</button>
+    </div>
+</div>
+
+<script>
+// A map of replacement strings back to the corresponding digits
+const reverseReplacementMap = {
+    'tqwrgfkskmoslzfsdswsq': '1',
+    'wbczeancdejblbqdufkhi': '2',
+    'abcdefghijklmnopqrst': '3',
+    'sdfgertyy3klrslkdfd21sd': '4',
+    'aabbccddzzxxyyqqww22ppqq': '5',
+    'asdsdsdsdsdsdsdsdsdsdsd': '6',
+    'dsaafdsfaasffaqweeewqwr': '7',
+    'qwertertertstsdflkj34sd': '8',
+    'szxswefcwerq2sdqrt2e11k': '9'
+};
+
+// Function to decode the transformed ID
+function decodeLastId(encodedString) {
+    // Iterate over the replacement map keys and replace each occurrence in the string
+    let decodedString = encodedString;
+
+    // Loop through each entry in the reverse map and replace it with the corresponding digit
+    for (const [replacement, digit] of Object.entries(reverseReplacementMap)) {
+        const regex = new RegExp(replacement, 'g'); // Create a global regex for replacing
+        decodedString = decodedString.replace(regex, digit);
+    }
+
+    return decodedString;
+}
+
+// Get the URL parameters
+const urlParams = new URLSearchParams(window.location.search);
+
+// Get the encoded last_id from the URL
+const encodedLastId = urlParams.get('data'); // 'data' is the query parameter used for last_id
+
+// Decode it back to the original ID
+const originalLastId = decodeLastId(encodedLastId);
+
+// Now, `originalLastId` holds the original numeric value of `last_id`
+console.log("Original last_id:", originalLastId);
+
+
+
+    // Use fetch to get session data from the server
+fetch('../php/getSessionData.php', {
+    method: 'GET', // HTTP request type
+    credentials: 'same-origin' // This ensures that cookies (like PHPSESSID) are sent with the request
+})
+.then(response => response.json()) // Parse the response as JSON
+.then(data => {
+    // Handle the session data
+    if (data.error) {
+        console.log('Error:', data.error);
+    } else {
+        console.log('Username:', data.username);
+        console.log('Email:', data.email);
+        console.log('User ID:', data.userId);
+
+        // You can now use this data in JavaScript
+        // Example: Store data in localStorage
+        localStorage.setItem('username', data.username);
+        localStorage.setItem('email', data.email);
+        localStorage.setItem('userId', data.userId);
+    }
+})
+.catch(error => {
+    console.error('Error fetching session data:', error);
+});
+
+    // Close overlay function
+    function closeOverlay() {
+        document.getElementById('overlay').classList.add('hide-overlay');
+    }
+</script>
+
+</body>
+</html>
